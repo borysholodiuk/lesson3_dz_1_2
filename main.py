@@ -12,13 +12,13 @@ class Human:
         self.surname = surname
         self.age = age
 
-    def info(self):
+    def __str__(self):
         return f"Name={self.name} Surname={self.surname} Age={self.age}"
 
 
 class Student:
     def __init__(self, human: Human, stipend: bool):
-        self.human = Human
+        self.human = human
         self.stipend = stipend
 
     def __str__(self):
@@ -36,7 +36,7 @@ class Group:
     def get_info(self):
         print(f"GroupName={self.name}")
         for student in self.students:
-            print(student.human.name)
+            print(student)
 
 
 if __name__ == '__main__':
@@ -47,7 +47,6 @@ if __name__ == '__main__':
     student_andriy = Student(andriy, True)
     student_bober = Student(bober, False)
     student_capibar = Student(capibar, True)
-    print(andriy, bober, capibar)
 
     group = Group(name="Group1", students=[student_andriy, student_bober, student_capibar])
     group.get_info()
